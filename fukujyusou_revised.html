@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福寿草の会 - 障がい者グループホーム</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts (Noto Sans JP, Kiwi Maru) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Kiwi+Maru:wght@400;500&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans JP', 'sans-serif'],
+                        serif: ['Kiwi Maru', 'serif'],
+                    },
+                    colors: {
+                        fukuYellow: {
+                            50: '#fffbeb',
+                            100: '#fef3c7',
+                            200: '#fde68a',
+                            300: '#fcd34d',
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        fukuGreen: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .page-transition {
+            transition: all 0.3s ease-in-out;
+        }
+        .leaf-pattern {
+            background-image: radial-gradient(#22c55e 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+        .nav-btn {
+            min-height: 46px;
+            line-height: 1.35;
+        }
+        @media (min-width: 640px) {
+            .nav-btn {
+                min-height: 42px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans min-h-screen flex flex-col selection:bg-fukuYellow-200">
+
+    <!-- ヘッダー / ナビゲーション -->
+    <header class="bg-white border-b border-stone-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 sm:py-4 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 sm:gap-4">
+            <!-- 施設ロゴ・タイトル -->
+            <div class="text-left flex-1 sm:flex-none">
+                <a href="#" onclick="switchTab('matsudo')" class="inline-block group">
+                    <h1 class="text-2xl md:text-3xl font-serif font-bold text-stone-800 tracking-wider flex items-center justify-start gap-2">
+                        <i class="fa-solid fa-leaf text-fukuGreen-600 text-xl" aria-hidden="true"></i>福寿草の会
+                    </h1>
+                </a>
+            </div>
+
+            <button
+                type="button"
+                id="mobile-menu-toggle"
+                class="sm:hidden inline-flex items-center justify-center gap-2 rounded-lg border border-[#CFE8C8] bg-[#F6FBF2] px-3 py-2 text-sm font-bold text-[#2F5D45] hover:bg-[#EAF6E6] transition-colors"
+                aria-controls="primary-nav"
+                aria-expanded="false"
+                onclick="toggleMobileMenu()"
+            >
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                メニュー
+            </button>
+
+            <!-- ナビゲーションメニュー -->
+            <nav id="primary-nav" class="hidden w-full sm:block sm:w-auto" aria-label="主要ナビゲーション">
+                <ul class="mt-1 sm:mt-0 flex flex-col sm:flex-row sm:flex-wrap justify-center md:justify-end gap-2 sm:gap-1.5 text-sm font-medium rounded-2xl border border-[#E1F0DB] bg-[#F6FBF2] sm:border-0 sm:bg-transparent p-3 sm:p-0 shadow-sm sm:shadow-none max-w-sm sm:max-w-none mx-auto md:mx-0">
+                    <li class="w-full sm:w-auto">
+                        <button onclick="switchTab('matsudo')" id="nav-matsudo" class="nav-btn w-full sm:w-auto px-4 sm:px-2.5 py-3 sm:py-2.5 rounded-lg text-fukuGreen-700 hover:bg-fukuGreen-50 transition-colors border-b-2 border-transparent">
+                            施設案内
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-auto">
+                        <button onclick="switchTab('feature')" id="nav-feature" class="nav-btn w-full sm:w-auto px-4 sm:px-2.5 py-3 sm:py-2.5 rounded-lg text-stone-600 hover:bg-fukuGreen-50 hover:text-fukuGreen-700 transition-colors border-b-2 border-transparent">
+                            当グループホームの特徴
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-auto">
+                        <button onclick="switchTab('jiman')" id="nav-jiman" class="nav-btn w-full sm:w-auto px-4 sm:px-2.5 py-3 sm:py-2.5 rounded-lg text-stone-600 hover:bg-fukuGreen-50 hover:text-fukuGreen-700 transition-colors border-b-2 border-transparent">
+                            暮らしの様子
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-auto">
+                        <button onclick="switchTab('flow')" id="nav-flow" class="nav-btn w-full sm:w-auto px-4 sm:px-2.5 py-3 sm:py-2.5 rounded-lg text-stone-600 hover:bg-fukuGreen-50 hover:text-fukuGreen-700 transition-colors border-b-2 border-transparent">
+                            ご利用の流れ
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-auto">
+                        <button onclick="switchTab('home-intro')" id="nav-home-intro" class="nav-btn w-full sm:w-auto px-4 sm:px-2.5 py-3 sm:py-2.5 rounded-lg text-stone-600 hover:bg-fukuGreen-50 hover:text-fukuGreen-700 transition-colors border-b-2 border-transparent">
+                            所在地・アクセス
+                        </button>
+                    </li>
+                    <li class="w-full sm:w-auto">
+                        <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn w-full sm:w-auto px-4 sm:px-2.5 py-3 sm:py-2.5 rounded-lg text-stone-600 hover:bg-fukuGreen-50 hover:text-fukuGreen-700 transition-colors border-b-2 border-transparent">
+                            お問い合わせ
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="flex-grow max-w-5xl w-full mx-auto px-4 pt-5 md:pt-8 pb-8 md:pb-12">
+
+        <!-- ================= SECTION: 施設案内（将来の matsudo.html 想定） ================= -->
+        <section id="page-matsudo" class="tab-content page-transition block">
+            <!-- ファーストビュー画像 -->
+            <div class="mb-6 md:mb-8">
+                <img
+                    src="assets/fukujyusou-firstview-illustration-20260714.jpg"
+                    alt="福寿草の会 ファーストビュー"
+                    width="1672"
+                    height="937"
+                    loading="eager"
+                    class="block w-full h-auto rounded-2xl border border-[#DCEED5] shadow-sm"
+                >
+            </div>
+
+            <!-- トップページ内のお問い合わせ導線 -->
+            <div class="mb-8 bg-[#EAF6E6] text-[#2F5D45] rounded-2xl p-5 md:p-6 shadow-sm border border-[#CFE8C8] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <p class="text-xs font-bold tracking-widest text-[#4F8A5B] uppercase">Contact</p>
+                    <h3 class="text-lg md:text-xl font-bold mt-1">ご見学・ご相談はお気軽にお問い合わせください</h3>
+                    <p class="text-sm text-[#3F6B52] mt-1">生活のこと、空き状況、体験入所の流れなど、まずはお電話でご相談いただけます。</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-2 md:flex-shrink-0">
+                    <a href="tel:090-6133-8208" class="inline-flex items-center justify-center gap-2 bg-[#4F8A5B] text-white font-bold px-4 py-3 rounded-lg shadow-sm hover:bg-[#3F744B] transition-colors">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>090-6133-8208
+                    </a>
+                    <button onclick="switchTab('contact')" class="inline-flex items-center justify-center gap-2 bg-white border border-[#CFE8C8] text-[#3F6B52] font-bold px-4 py-3 rounded-lg hover:bg-[#F6FBF2] transition-colors">
+                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>お問い合わせを見る
+                    </button>
+                </div>
+            </div>
+
+            <!-- メイン紹介カード -->
+            <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden mb-8">
+                <div class="p-6 md:p-8">
+                    <!-- タイトルと葉っぱのあしらい -->
+                    <div class="mb-6">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i class="fa-solid fa-house-chimney text-fukuGreen-600 text-xl" aria-hidden="true"></i>
+                            <h3 class="text-xl md:text-2xl font-bold text-stone-800">フレンドリー松戸・柏</h3>
+                        </div>
+                        <!-- 葉っぱの並び風デザイン (印刷物の葉っぱあしらいの再現) -->
+                        <div class="flex gap-2 text-emerald-500 text-xs mt-2 select-none">
+                            <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                            <i class="fa-solid fa-leaf transform rotate-12"></i>
+                            <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                            <i class="fa-solid fa-leaf transform rotate-12"></i>
+                            <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                            <i class="fa-solid fa-leaf transform rotate-12"></i>
+                        </div>
+                    </div>
+
+                    <!-- 概要 & 特徴 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                        <div class="lg:col-span-7 space-y-4">
+                            <p class="text-stone-700 leading-relaxed">
+                                <span class="bg-red-100 text-red-700 px-2.5 py-1 rounded-md font-bold text-sm mr-2 inline-block">女性専用</span>
+                                の障がい（知的・精神・身体・難病）の方を対象としたグループホームです。
+                            </p>
+                            <!-- 24時間365日3食アピール -->
+                            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl">
+                                <h4 class="font-bold text-amber-800 text-lg md:text-xl">
+                                    24時間365日、手作りの食事をご用意しています。
+                                </h4>
+                            </div>
+                            <ul class="space-y-3 text-stone-600 text-sm md:text-base">
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-fukuGreen-600 mt-1 flex-shrink-0"></i>
+                                    <span>全室個室で、プライバシーに配慮した生活環境です。</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-fukuGreen-600 mt-1 flex-shrink-0"></i>
+                                    <span>日中は就労や作業所、デイケア・デイサービスなど、それぞれの予定に合わせて過ごします。</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-fukuGreen-600 mt-1 flex-shrink-0"></i>
+                                    <span>生活リズムを整えながら、お一人おひとりのペースで次の一歩を支援します。</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-fukuGreen-600 mt-1 flex-shrink-0"></i>
+                                    <span>ホームのルールをみんなで話し合い、世話人や職員と決めていきます。</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fa-solid fa-circle-check text-fukuGreen-600 mt-1 flex-shrink-0"></i>
+                                    <span>困りごとや悩みごとは、管理者や世話人に相談しながら一緒に考えていきます。</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- 右側：オリジナルイラスト（女性4人が肩を組む様子） -->
+                        <div class="lg:col-span-5 bg-gradient-to-br from-emerald-50 to-amber-50 p-6 rounded-2xl border border-stone-100 flex flex-col items-center justify-center text-center">
+                            <div class="w-full max-w-[280px] h-[160px] flex items-end justify-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200" class="w-full h-full">
+                                    <circle cx="200" cy="100" r="80" fill="#fef3c7" opacity="0.6"/>
+                                    <g transform="translate(110, 50)">
+                                        <ellipse cx="30" cy="90" rx="20" ry="40" fill="#f87171" />
+                                        <circle cx="30" cy="40" r="18" fill="#ffedd5" />
+                                        <path d="M12,40 Q30,20 48,40" fill="none" stroke="#7c2d12" stroke-width="4"/>
+                                        <path d="M15,40 A1,1 0 0 0 16,40" stroke="#7c2d12" stroke-width="2"/>
+                                        <path d="M44,40 A1,1 0 0 0 45,40" stroke="#7c2d12" stroke-width="2"/>
+                                        <path d="M25,50 Q30,55 35,50" fill="none" stroke="#7c2d12" stroke-width="1.5"/>
+                                    </g>
+                                    <g transform="translate(160, 45)">
+                                        <ellipse cx="30" cy="90" rx="20" ry="40" fill="#4ade80" />
+                                        <circle cx="30" cy="40" r="18" fill="#fed7aa" />
+                                        <path d="M12,35 C15,15 45,15 48,35" fill="#451a03"/>
+                                        <path d="M25,50 Q30,55 35,50" fill="none" stroke="#7c2d12" stroke-width="1.5"/>
+                                    </g>
+                                    <g transform="translate(210, 45)">
+                                        <ellipse cx="30" cy="90" rx="20" ry="40" fill="#f472b6" />
+                                        <circle cx="30" cy="40" r="18" fill="#ffedd5" />
+                                        <path d="M12,38 Q30,22 48,38" fill="none" stroke="#1c1917" stroke-width="4"/>
+                                        <path d="M25,50 Q30,55 35,50" fill="none" stroke="#7c2d12" stroke-width="1.5"/>
+                                    </g>
+                                    <g transform="translate(260, 50)">
+                                        <ellipse cx="30" cy="90" rx="20" ry="40" fill="#38bdf8" />
+                                        <circle cx="30" cy="40" r="18" fill="#fed7aa" />
+                                        <path d="M12,38 Q30,20 48,38" fill="none" stroke="#7c2d12" stroke-width="4"/>
+                                        <path d="M25,50 Q30,55 35,50" fill="none" stroke="#7c2d12" stroke-width="1.5"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-stone-700">支え合いながら、穏やかに暮らす</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 看護師・夜勤などサポート体制カード -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- 看護師所属 -->
+                <div class="bg-emerald-50/70 border border-emerald-100 rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-4 shadow-sm">
+                    <!-- 看護師イラストSVG -->
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-inner">
+                        <svg viewBox="0 0 100 100" class="w-14 h-14">
+                            <path d="M30,30 L70,30 L65,15 L35,15 Z" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+                            <path d="M45,22 L55,22 M50,17 L50,27" stroke="#ef4444" stroke-width="3"/>
+                            <circle cx="50" cy="55" r="22" fill="#ffedd5"/>
+                            <path d="M38,55 Q50,65 62,55" fill="none" stroke="#b45309" stroke-width="2"/>
+                            <path d="M28,55 C28,40 72,40 72,55" fill="none" stroke="#451a03" stroke-width="6"/>
+                            <circle cx="42" cy="50" r="2.5" fill="#451a03"/>
+                            <circle cx="58" cy="50" r="2.5" fill="#451a03"/>
+                        </svg>
+                    </div>
+                    <div class="text-center sm:text-left space-y-2">
+                        <div class="flex items-center justify-center sm:justify-start gap-1.5">
+                            <h4 class="font-bold text-stone-800 text-lg">看護師が所属しており、体調不良時にも状況に応じて対応します。</h4>
+                        </div>
+                        <ul class="text-sm text-stone-600 space-y-1 text-left list-disc list-inside">
+                            <li>食事内容や服薬について、必要に応じて確認します。</li>
+                            <li>行政機関等の手続きもお手伝いします。</li>
+                            <li>金銭管理は、世話人や職員と一緒に確認しながら進めます。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 夜勤体制 -->
+                <div class="bg-blue-50/60 border border-blue-100 rounded-2xl p-6 flex flex-col sm:flex-row items-center sm:items-start gap-4 shadow-sm">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center flex-shrink-0 shadow-inner">
+                        <i class="fa-solid fa-moon text-3xl text-sky-700" aria-hidden="true"></i>
+                    </div>
+                    <div class="text-center sm:text-left space-y-2 flex-grow">
+                        <h4 class="font-bold text-stone-800 text-lg">夜勤体制があり、夜間も落ち着いて過ごせるよう見守ります。</h4>
+                        <ul class="text-sm text-stone-600 space-y-1 text-left list-disc list-inside">
+                            <li>夜間も職員が状況を確認します。</li>
+                            <li>必要に応じて声かけや見守りを行います。</li>
+                            <li>落ち着いて休める生活環境づくりを大切にしています。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ホームの外観・アプローチ・部屋紹介 -->
+            <div class="bg-stone-100/60 rounded-3xl p-6 md:p-8 border border-stone-200">
+                <h4 class="text-lg font-bold text-stone-800 mb-4 flex items-center gap-1.5">
+                    <i class="fa-solid fa-camera text-amber-500"></i> ホームの雰囲気 (グループホームの外観です。)
+                </h4>
+                <p class="text-stone-600 text-sm mb-4">お花に囲まれた入口を進むと、趣のある玄関が待っています。</p>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <!-- 外観 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-stone-200 hover:shadow-md transition-shadow">
+                        <div class="h-44 bg-stone-200 overflow-hidden relative">
+                            <img src="assets/home-atmosphere-exterior-20260705.png" alt="福寿草の会 ホームの外観" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded">外観</span>
+                        </div>
+                    </div>
+                    <!-- 外観 -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-stone-200 hover:shadow-md transition-shadow">
+                        <div class="h-44 bg-stone-200 overflow-hidden relative">
+                            <img src="assets/home-atmosphere-exterior-approach-20260706.jpg" alt="花に囲まれたアプローチとグループホームの外観" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded">外観</span>
+                        </div>
+                    </div>
+                    <!-- 内観（個室） -->
+                    <div class="bg-white rounded-xl overflow-hidden shadow-sm border border-stone-200 hover:shadow-md transition-shadow">
+                        <div class="h-44 bg-stone-200 overflow-hidden relative">
+                            <img src="assets/home-atmosphere-room-20260705.png" alt="福寿草の会 ホームの居室" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-black/60 text-white text-xs px-2 py-0.5 rounded">居室</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION: 当グループホームの特徴（将来の feature.html 想定） ================= -->
+        <section id="page-feature" class="tab-content page-transition hidden space-y-8">
+            <!-- ページタイトル -->
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-stone-800 mt-2">当グループホームの特徴</h2>
+                <p class="text-sm md:text-base text-stone-600 mt-3">地域の中で、その方らしく、安心して暮らすために。</p>
+                <div class="flex justify-center gap-2 text-emerald-500 text-xs mt-3 select-none">
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                </div>
+            </div>
+
+            <!-- メイン画像と紹介文 -->
+            <div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-5 md:p-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-7 md:gap-8 items-start">
+                    <figure>
+                        <div class="overflow-hidden rounded-2xl border border-emerald-100 shadow-sm bg-stone-100" style="aspect-ratio: 4 / 3;">
+                            <img src="assets/group-home-feature-meal-20260714.jpg" alt="季節の食事を囲むグループホームの温かな交流" class="w-full h-full object-cover">
+                        </div>
+                        <figcaption class="mt-2 text-xs text-stone-500 leading-relaxed">
+                            季節の行事や食事の時間を通じて、穏やかな交流を大切にしています。
+                        </figcaption>
+                    </figure>
+
+                    <div class="space-y-4 text-sm md:text-base text-stone-700 leading-relaxed">
+                        <p>福寿草の会は、障がいのある方が地域の中で安心して暮らせるよう支援するグループホームです。</p>
+                        <p>全室個室の落ち着いた環境で、生活リズム、日中活動、服薬、金銭管理、行政手続きなどを、一人ひとりの状況に合わせて支援します。</p>
+                        <p>サービス提供管理責任者が個別支援計画を作成し、世話人や職員が日々の困りごとに寄り添います。</p>
+                        <p>夜間も職員が見守り、安心して休める環境を整えています。</p>
+                        <p class="bg-[#EAF6E6] border-l-4 border-[#4F8A5B] rounded-r-2xl px-4 py-3 text-[#2F5D45] font-medium">
+                            急がず、その方のペースを大切にしながら、地域の中で自分らしく暮らしていけるよう支援します。
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 施設概要 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-amber-50/50 border border-amber-200/50 rounded-2xl p-5 md:p-6 shadow-sm">
+                    <p class="text-sm font-bold text-amber-800 flex items-center gap-2">
+                        <i class="fa-solid fa-users text-amber-500"></i> 定員
+                    </p>
+                    <p class="mt-2 text-3xl md:text-4xl font-serif font-bold text-stone-800">6名</p>
+                    <p class="mt-2 text-sm text-stone-600 leading-relaxed">少人数の落ち着いた環境で、一人ひとりに合わせた支援を行います。</p>
+                </div>
+                <div class="bg-amber-50/50 border border-amber-200/50 rounded-2xl p-5 md:p-6 shadow-sm">
+                    <p class="text-sm font-bold text-amber-800 flex items-center gap-2">
+                        <i class="fa-solid fa-house-chimney text-amber-500"></i> サテライト型住居
+                    </p>
+                    <p class="mt-2 text-3xl md:text-4xl font-serif font-bold text-stone-800">2戸</p>
+                    <p class="mt-2 text-sm text-stone-600 leading-relaxed">地域の中で、より自立した暮らしを目指す方の生活を支援します。</p>
+                </div>
+            </div>
+
+            <!-- 大切にしていること -->
+            <div class="space-y-5">
+                <div>
+                    <h3 class="text-xl md:text-2xl font-serif font-bold text-stone-800">私たちが大切にしていること</h3>
+                    <div class="mt-2 w-20 h-1 bg-[#CFE8C8] rounded-full"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5">
+                        <h4 class="font-bold text-stone-800 flex items-center gap-2">
+                            <span class="w-9 h-9 rounded-full bg-[#EAF6E6] text-[#4F8A5B] flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-bed"></i></span>
+                            落ち着いて暮らせる住環境
+                        </h4>
+                        <ul class="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#4F8A5B] mt-1"></i><span>全室個室で、プライバシーに配慮します</span></li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#4F8A5B] mt-1"></i><span>夜間も職員が見守る体制を整えています</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5">
+                        <h4 class="font-bold text-stone-800 flex items-center gap-2">
+                            <span class="w-9 h-9 rounded-full bg-[#EAF6E6] text-[#4F8A5B] flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-hand-holding-heart"></i></span>
+                            一人ひとりに合わせた支援
+                        </h4>
+                        <ul class="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#4F8A5B] mt-1"></i><span>一人ひとりの個別支援計画に沿って支援します</span></li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#4F8A5B] mt-1"></i><span>生活リズムを整え、自分らしい暮らしを支えます</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5">
+                        <h4 class="font-bold text-stone-800 flex items-center gap-2">
+                            <span class="w-9 h-9 rounded-full bg-[#EAF6E6] text-[#4F8A5B] flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-comments"></i></span>
+                            日々の生活を一緒に考える
+                        </h4>
+                        <ul class="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#4F8A5B] mt-1"></i><span>困りごとは、世話人や職員と一緒に考えます</span></li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#4F8A5B] mt-1"></i><span>行政手続きや金銭管理も必要に応じてお手伝いします</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-5">
+                        <h4 class="font-bold text-stone-800 flex items-center gap-2">
+                            <span class="w-9 h-9 rounded-full bg-[#EAF6E6] text-[#4F8A5B] flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-heart-pulse"></i></span>
+                            日中活動と健康を支える
+                        </h4>
+                        <ul class="mt-4 space-y-2 text-sm text-stone-600 leading-relaxed">
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#4F8A5B] mt-1"></i><span>日中活動や就労、通所生活を支援します</span></li>
+                            <li class="flex gap-2"><i class="fa-solid fa-check text-[#4F8A5B] mt-1"></i><span>服薬や食事内容を確認し、健康管理を支えます</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 締めのメッセージ -->
+            <div class="bg-[#EAF6E6] border border-[#CFE8C8] rounded-3xl p-6 md:p-8 shadow-sm">
+                <div class="max-w-3xl">
+                    <p class="text-xs font-bold tracking-widest text-[#4F8A5B] uppercase">Message</p>
+                    <h3 class="text-xl md:text-2xl font-serif font-bold text-[#2F5D45] mt-1">その方のペースを大切にします</h3>
+                    <div class="mt-4 space-y-3 text-sm md:text-base text-[#3F6B52] leading-relaxed">
+                        <p>新しい環境での暮らしには、不安を感じることもあります。</p>
+                        <p>福寿草の会では、すぐに何かを求めるのではなく、一人ひとりの気持ちや生活のペースを大切にしています。</p>
+                        <p>できることを少しずつ増やしながら、地域の中で安心して暮らせるよう支援します。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ご見学・ご相談への導線 -->
+            <div class="bg-[#EAF6E6] text-[#2F5D45] rounded-2xl p-5 md:p-6 shadow-sm border border-[#CFE8C8] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <p class="text-xs font-bold tracking-widest text-[#4F8A5B] uppercase">Contact</p>
+                    <h3 class="text-lg md:text-xl font-bold mt-1">ご見学・ご相談を受け付けています</h3>
+                    <p class="text-sm text-[#3F6B52] mt-1">生活のこと、空き状況、体験入所の流れなど、まずはお気軽にお電話でご相談ください。</p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <a href="tel:090-6133-8208" class="inline-flex items-center justify-center gap-2 bg-[#4F8A5B] text-white font-bold px-4 py-3 rounded-lg hover:bg-[#3F6B52] transition-colors shadow-sm">
+                        <i class="fa-solid fa-phone" aria-hidden="true"></i>電話で相談する
+                    </a>
+                    <button onclick="switchTab('contact')" class="inline-flex items-center justify-center gap-2 bg-white border border-[#CFE8C8] text-[#3F6B52] font-bold px-4 py-3 rounded-lg hover:bg-[#F6FBF2] transition-colors">
+                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>お問い合わせを見る
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION: 暮らしの様子（将来の life.html 想定） ================= -->
+        <section id="page-jiman" class="tab-content page-transition hidden space-y-8">
+            <!-- イントロ -->
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-stone-800 mt-2">暮らしの様子</h2>
+                <div class="flex justify-center gap-2 text-emerald-500 text-xs mt-3 select-none">
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                </div>
+            </div>
+
+            <!-- 食事とイベント -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 毎日の食事 -->
+                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 space-y-4">
+                    <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+                        <h3 class="text-lg font-bold text-amber-700 flex items-center gap-1.5">
+                            〜毎日の食事〜
+                        </h3>
+                        <span class="text-xs text-stone-400">画像クリックで拡大</span>
+                    </div>
+                    <p class="text-sm text-stone-600 leading-relaxed">
+                        毎日の食事は、生活の楽しみのひとつです。<br>
+                        献立表を見ながら、帰宅後の食事を楽しみにされる方もいらっしゃいます。<br>
+                        <span class="text-xs text-stone-400">(画像をクリックすると大きく表示されます)</span>
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 mt-3">
+                        <div class="relative group cursor-pointer overflow-hidden rounded-xl border border-stone-100" onclick="openLightbox('assets/kurashi-shokuji-yushoku-20260706.png', '家庭的な品数の多い夕食の食卓')">
+                            <img src="assets/kurashi-shokuji-yushoku-20260706.png" alt="家庭的な品数の多い夕食の食卓" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs transition-opacity font-medium">拡大表示</div>
+                        </div>
+                        <div class="relative group cursor-pointer overflow-hidden rounded-xl border border-stone-100" onclick="openLightbox('assets/kurashi-shokuji-chuka-20260705.jpg', '福寿草の会 毎日の食事 中華料理')">
+                            <img src="assets/kurashi-shokuji-chuka-20260705.jpg" alt="福寿草の会 毎日の食事 中華料理" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs transition-opacity font-medium">拡大表示</div>
+                        </div>
+                    </div>
+                    <div class="bg-amber-50 rounded-xl p-3 text-xs text-amber-800 flex items-start gap-1.5">
+                        <i class="fa-solid fa-circle-info mt-0.5"></i>
+                        <span>掲載している写真は食事の雰囲気を伝えるための一例です。日々の献立は、家庭的で無理のない内容を心がけています。</span>
+                    </div>
+                </div>
+
+                <!-- イベントは盛大に -->
+                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 space-y-4">
+                    <div class="flex items-center justify-between border-b border-stone-100 pb-3">
+                        <h3 class="text-lg font-bold text-amber-700 flex items-center gap-1.5">
+                            〜イベントは盛大に〜
+                        </h3>
+                        <span class="text-xs text-stone-400">画像クリックで拡大</span>
+                    </div>
+                    <p class="text-sm text-stone-600 leading-relaxed">
+                        お誕生日や季節の行事では、食卓を少し華やかに整えています。<br>
+                        いつもの暮らしの中に、楽しみを感じられる時間を大切にしています。
+                    </p>
+                    <div class="grid grid-cols-2 gap-3 mt-3">
+                        <div class="relative group cursor-pointer overflow-hidden rounded-xl border border-stone-100" onclick="openLightbox('assets/kurashi-event-cake-20260705.jpg', '福寿草の会 イベント用ホールケーキ')">
+                            <img src="assets/kurashi-event-cake-20260705.jpg" alt="福寿草の会 イベント用ホールケーキ" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs transition-opacity font-medium">拡大表示</div>
+                        </div>
+                        <div class="relative group cursor-pointer overflow-hidden rounded-xl border border-stone-100" onclick="openLightbox('assets/kurashi-event-table-20260706.jpg', 'イベント時の華やかな食卓とケーキ')">
+                            <img src="assets/kurashi-event-table-20260706.jpg" alt="イベント時の華やかな食卓とケーキ" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-xs transition-opacity font-medium">拡大表示</div>
+                        </div>
+                    </div>
+                    <div class="bg-amber-50 rounded-xl p-3.5 text-sm text-stone-700 leading-relaxed border border-amber-100">
+                        <p>大きなケーキに立派なちらし寿司。</p>
+                        <p class="mt-1">「こんなに大きなケーキは見たことない」と、皆さんに喜んでいただいています。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 文庫室と庭 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 小さな文庫室 -->
+                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+                    <!-- SVG本イラスト -->
+                    <div class="w-24 h-24 flex-shrink-0 bg-emerald-50 rounded-2xl flex items-center justify-center text-center">
+                        <svg viewBox="0 0 100 100" class="w-16 h-16">
+                            <rect x="15" y="65" width="70" height="15" rx="2" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+                            <rect x="20" y="50" width="60" height="15" rx="2" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
+                            <rect x="18" y="35" width="64" height="15" rx="2" fill="#f59e0b" stroke="#b45309" stroke-width="2"/>
+                            <path d="M40,25 Q50,15 60,25" fill="none" stroke="#059669" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-2 text-center sm:text-left flex-grow">
+                        <h3 class="text-lg font-bold text-emerald-800">〜小さな文庫室〜</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            世話人が持ち寄った本や、ホームで購入した本を置いた小さな文庫室があります。<br>
+                            好きな本を手に取りながら、ゆっくり過ごせる場所です。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 庭のある我が家 -->
+                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm p-6 flex flex-col sm:flex-row gap-4 items-center sm:items-start">
+                    <!-- SVG黄色のお花イラスト -->
+                    <div class="w-24 h-24 flex-shrink-0 bg-amber-50 rounded-2xl flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="w-16 h-16">
+                            <circle cx="50" cy="50" r="10" fill="#f59e0b"/>
+                            <circle cx="50" cy="32" r="10" fill="#fcd34d"/>
+                            <circle cx="50" cy="68" r="10" fill="#fcd34d"/>
+                            <circle cx="32" cy="50" r="10" fill="#fcd34d"/>
+                            <circle cx="68" cy="50" r="10" fill="#fcd34d"/>
+                            <path d="M20,80 Q35,70 50,80" fill="none" stroke="#059669" stroke-width="3"/>
+                        </svg>
+                    </div>
+                    <div class="space-y-2 text-center sm:text-left">
+                        <h3 class="text-lg font-bold text-emerald-800">〜庭のある我が家〜</h3>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            日本水仙、チューリップ、花菖蒲など、季節ごとの花が見られる庭があります。<br>
+                            庭の一部は畑としても使い、トマトや胡瓜、夏にはゴーヤを育てています。<br>
+                            収穫した野菜を食卓に取り入れることもあります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION: ご利用の流れ（将来の flow.html 想定） ================= -->
+        <section id="page-flow" class="tab-content page-transition hidden">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-stone-800 mt-2">ご利用の流れ</h2>
+                <div class="flex justify-center gap-2 text-emerald-500 text-xs mt-3 select-none">
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                </div>
+            </div>
+
+            <!-- タイムライン / ステップ表示 -->
+            <div class="max-w-3xl mx-auto relative border-l-2 border-emerald-200 ml-4 md:ml-10 space-y-10 py-2">
+                
+                <!-- Step 1 -->
+                <div class="relative pl-6 md:pl-10">
+                    <div class="absolute -left-4 top-1.5 w-8 h-8 rounded-full bg-emerald-600 border-4 border-stone-50 flex items-center justify-center text-white font-bold text-xs shadow">1</div>
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 hover:shadow-md transition-shadow">
+                        <span class="text-emerald-700 font-bold text-sm uppercase tracking-wide">Step1 ご相談・ご見学</span>
+                        <p class="text-sm text-stone-600 mt-2 leading-relaxed">
+                            まずはお気軽にお電話でお問い合わせください。<br>
+                            病院・保健センター・各施設を通して、またはお電話にて見学をお申し込みいただけます。<br>
+                            現地で設備やサービス内容についてご説明します。<br>
+                            ご希望や条件、ご本人の状況などもお聞かせください。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative pl-6 md:pl-10">
+                    <div class="absolute -left-4 top-1.5 w-8 h-8 rounded-full bg-emerald-600 border-4 border-stone-50 flex items-center justify-center text-white font-bold text-xs shadow">2</div>
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 hover:shadow-md transition-shadow">
+                        <span class="text-emerald-700 font-bold text-sm uppercase tracking-wide">Step2 ご面談・お申し込み・体験入所</span>
+                        <p class="text-sm text-stone-600 mt-2 leading-relaxed">
+                            担当の職員が、ご本人の状況をお伺いします。<br>
+                            診断情報提供書をご提出いただきます。<br>
+                            その後、実際に体験入所をしていただきます。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative pl-6 md:pl-10">
+                    <div class="absolute -left-4 top-1.5 w-8 h-8 rounded-full bg-emerald-600 border-4 border-stone-50 flex items-center justify-center text-white font-bold text-xs shadow">3</div>
+                    <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 hover:shadow-md transition-shadow">
+                        <span class="text-emerald-700 font-bold text-sm uppercase tracking-wide">Step3 ご入居</span>
+                        <p class="text-sm text-stone-600 mt-2 leading-relaxed">
+                            入所判定後、サービス利用受給者証が発行され、<br>
+                            契約書・重要事項説明書などをご説明させていただき、<br>
+                            新しい生活のスタートとなります。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION: 所在地・アクセス（将来の access.html 想定） ================= -->
+        <section id="page-home-intro" class="tab-content page-transition hidden">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-stone-800 mt-2">所在地・アクセス</h2>
+                <div class="flex justify-center gap-2 text-emerald-500 text-xs mt-3 select-none">
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                </div>
+            </div>
+
+            <!-- 2拠点の紹介 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 松戸エリア -->
+                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden flex flex-col justify-between">
+                    <div class="p-6 md:p-8 space-y-4">
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">松戸エリア</span>
+                        <h3 class="text-xl font-bold text-stone-800 mt-1">フレンドリー松戸</h3>
+                        
+                        <div class="space-y-3.5 text-sm text-stone-600">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-map-location-dot text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-bold text-stone-800">住所</p>
+                                    <p class="mt-0.5">〒270-2203 千葉県松戸市六高台2丁目140-2</p>
+                                    <button onclick="copyToClipboard('千葉県松戸市六高台2丁目140-2')" class="text-xs text-emerald-600 hover:underline mt-1 flex items-center gap-1">
+                                        <i class="fa-regular fa-copy"></i> 住所をコピーする
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-phone text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-bold text-stone-800">連絡先</p>
+                                    <!-- 確認用: 所在地・アクセス内のフレンドリー松戸施設直通番号として残しています。 -->
+                                    <a href="tel:047-375-8267" class="text-stone-800 font-semibold hover:underline mt-0.5 block">047-375-8267</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-train text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-bold text-stone-800">アクセス</p>
+                                    <p class="mt-0.5">東武アーバンパークライン 六実駅(ムツミ)より 徒歩約10分</p>
+                                </div>
+                            </div>
+                            <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100/30">
+                                <p class="text-xs text-amber-800 font-bold"><i class="fa-solid fa-circle-plus mr-1"></i>フレンドリー松戸サテライト型①・②</p>
+                                <p class="text-xs text-stone-500 mt-0.5">千葉県松戸市六高台</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 地図 松戸 -->
+                    <div class="p-6 bg-stone-50 border-t border-stone-100 flex flex-col items-center">
+                        <div class="w-full h-56 bg-stone-100 rounded-xl relative overflow-hidden border border-stone-200 shadow-inner">
+                            <iframe
+                                title="フレンドリー松戸 周辺地図"
+                                src="https://www.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E6%9D%BE%E6%88%B8%E5%B8%82%E5%85%AD%E9%AB%98%E5%8F%B02%E4%B8%81%E7%9B%AE140-2&output=embed"
+                                class="absolute inset-0 w-full h-full border-0"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <a href="https://www.google.com/maps/search/?api=1&query=千葉県松戸市六高台2丁目140-2" target="_blank" rel="noopener noreferrer" class="absolute bottom-2 right-2 bg-white/95 text-stone-700 text-xs px-2.5 py-1.5 rounded-lg font-bold border border-stone-200 hover:bg-stone-100 transition-colors shadow flex items-center gap-1">
+                                <i class="fa-solid fa-map-pin text-red-500"></i> Googleマップで見る
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 柏エリア -->
+                <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden flex flex-col justify-between">
+                    <div class="p-6 md:p-8 space-y-4">
+                        <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">柏エリア</span>
+                        <h3 class="text-xl font-bold text-stone-800 mt-1">フレンドリー柏</h3>
+                        
+                        <div class="space-y-3.5 text-sm text-stone-600">
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-map-location-dot text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-bold text-stone-800">住所</p>
+                                    <p class="mt-0.5">〒277-0042 千葉県柏市逆井1丁目4-15</p>
+                                    <button onclick="copyToClipboard('千葉県柏市逆井1丁目4-15')" class="text-xs text-emerald-600 hover:underline mt-1 flex items-center gap-1">
+                                        <i class="fa-regular fa-copy"></i> 住所をコピーする
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-phone text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-bold text-stone-800">連絡先</p>
+                                    <a href="tel:04-7128-8188" class="text-stone-800 font-semibold hover:underline mt-0.5 block">04-7128-8188</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i class="fa-solid fa-train text-amber-500 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-bold text-stone-800">アクセス</p>
+                                    <p class="mt-0.5">東武アーバンパークライン 逆井駅(サカサイ)より 徒歩約3分</p>
+                                </div>
+                            </div>
+                            <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100/30">
+                                <p class="text-xs text-amber-800 font-bold"><i class="fa-solid fa-circle-plus mr-1"></i>フレンドリー柏サテライト型①・②</p>
+                                <p class="text-xs text-stone-500 mt-0.5">千葉県柏市逆井</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 地図 柏 -->
+                    <div class="p-6 bg-stone-50 border-t border-stone-100 flex flex-col items-center">
+                        <div class="w-full h-56 bg-stone-100 rounded-xl relative overflow-hidden border border-stone-200 shadow-inner">
+                            <iframe
+                                title="フレンドリー柏 周辺地図"
+                                src="https://www.google.com/maps?q=%E5%8D%83%E8%91%89%E7%9C%8C%E6%9F%8F%E5%B8%82%E9%80%86%E4%BA%951%E4%B8%81%E7%9B%AE4-15&output=embed"
+                                class="absolute inset-0 w-full h-full border-0"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <a href="https://www.google.com/maps/search/?api=1&query=千葉県柏市逆井1丁目4-15" target="_blank" rel="noopener noreferrer" class="absolute bottom-2 right-2 bg-white/95 text-stone-700 text-xs px-2.5 py-1.5 rounded-lg font-bold border border-stone-200 hover:bg-stone-100 transition-colors shadow flex items-center gap-1">
+                                <i class="fa-solid fa-map-pin text-red-500"></i> Googleマップで見る
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SECTION: お問い合わせ（将来の contact.html 想定） ================= -->
+        <section id="page-contact" class="tab-content page-transition hidden">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-3xl font-serif font-bold text-stone-800 mt-2">お問い合わせ</h2>
+                <div class="flex justify-center gap-2 text-emerald-500 text-xs mt-3 select-none">
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform -rotate-12"></i>
+                    <i class="fa-solid fa-leaf transform rotate-12"></i>
+                </div>
+            </div>
+
+            <!-- お問い合わせ情報 左右並列カード（2カラム） -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- 左側：直接のお問い合わせ連絡先（総合窓口） -->
+                <div class="bg-amber-50/50 border border-amber-200/50 rounded-3xl p-6 md:p-8 space-y-6">
+                    <div>
+                        <h3 class="text-lg font-bold text-amber-800 mb-1 flex items-center gap-1.5">
+                            <i class="fa-solid fa-user-tie"></i> 総合お問い合わせ
+                        </h3>
+                        <p class="text-xs text-stone-500">ご相談・ご見学など、お気軽にお問い合わせください。</p>
+                    </div>
+
+                    <div class="space-y-4 text-stone-700">
+                        <!-- 担当者 -->
+                        <div class="border-b border-amber-200/40 pb-2.5">
+                            <p class="text-xs text-stone-400 font-bold">担当</p>
+                            <p class="text-base font-bold text-stone-800 mt-0.5">古山（ふるやま）</p>
+                        </div>
+                        <!-- 連絡先 -->
+                        <div class="border-b border-amber-200/40 pb-2.5">
+                            <p class="text-xs text-stone-400 font-bold">見学・ご相談</p>
+                            <a href="tel:090-6133-8208" class="text-lg font-extrabold text-emerald-700 hover:underline">090-6133-8208</a>
+                        </div>
+                        <!-- メール -->
+                        <div>
+                            <p class="text-xs text-stone-400 font-bold">メール</p>
+                            <a href="mailto:fukujyusouosamu0123@yahoo.co.jp" class="text-sm font-semibold break-all text-stone-800 hover:text-emerald-700 hover:underline select-all block mt-0.5">fukujyusouosamu0123@yahoo.co.jp</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右側：グループホーム直通電話 -->
+                <div class="bg-white border border-stone-200 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between">
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-stone-800 mb-1 flex items-center gap-1.5">
+                                <i class="fa-solid fa-house-chimney text-emerald-600"></i> 各グループホーム直通
+                            </h3>
+                            <p class="text-xs text-stone-500">施設へ直接お電話される場合は、下記番号へご連絡ください。</p>
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- フレンドリー松戸 -->
+                            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 space-y-2">
+                                <h4 class="font-bold text-stone-800 text-sm flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> フレンドリー松戸
+                                </h4>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-stone-500">お電話番号</span>
+                                    <!-- 確認用: 各グループホーム直通のフレンドリー松戸番号として残しています。 -->
+                                    <a href="tel:047-375-8267" class="text-lg font-extrabold text-stone-900 hover:text-emerald-700 hover:underline transition-colors">
+                                        047-375-8267
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- フレンドリー柏 -->
+                            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 space-y-2">
+                                <h4 class="font-bold text-stone-800 text-sm flex items-center gap-1.5">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> フレンドリー柏
+                                </h4>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-stone-500">お電話番号</span>
+                                    <a href="tel:04-7128-8188" class="text-lg font-extrabold text-stone-900 hover:text-emerald-700 hover:underline transition-colors">
+                                        04-7128-8188
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 補足案内 -->
+                    <div class="mt-6 pt-4 border-t border-stone-100 text-[11px] text-stone-500 leading-relaxed">
+                        ※お電話をおかけの際は、お掛け間違いのないようご注意ください。<br>
+                        ※ご見学や体験入所の手続き方法などは、「ご利用の流れ」ページでもご確認いただけます。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- フッター -->
+    <footer class="bg-[#F1F7EA] text-[#3F6B52] mt-12 py-12 border-t-4 border-[#CFE8C8]">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+            <!-- 組織情報 -->
+            <div class="md:col-span-5 space-y-5 md:space-y-4">
+                <h4 class="text-xl font-serif font-bold text-[#2F5D45] tracking-wider flex items-center gap-1.5">
+                    <i class="fa-solid fa-leaf text-[#4F8A5B]" aria-hidden="true"></i>特定非営利活動法人 福寿草の会
+                </h4>
+                <p class="text-sm md:text-xs text-[#3F6B52] leading-relaxed max-w-sm">
+                    私たちは、地域の中でその方らしく暮らしていくことを支えるグループホームです。家族のような温かさと、落ち着いて過ごせる環境づくりを大切にしています。
+                </p>
+                <p class="text-sm md:text-xs text-[#3F6B52] leading-relaxed">
+                    <span class="font-bold text-[#2F5D45]">見学・ご相談：</span> 090-6133-8208（担当：古山）
+                </p>
+            </div>
+
+            <!-- ナビゲーションリンク -->
+            <div class="md:col-span-4 space-y-4 md:space-y-3">
+                <h5 class="text-sm md:text-xs font-bold uppercase tracking-widest text-[#2F5D45]">ページマップ</h5>
+                <ul class="text-sm md:text-xs space-y-2.5 md:space-y-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4">
+                    <li><button onclick="switchTab('matsudo')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> 施設案内</button></li>
+                    <li><button onclick="switchTab('feature')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> 当グループホームの特徴</button></li>
+                    <li><button onclick="switchTab('jiman')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> 暮らしの様子</button></li>
+                    <li><button onclick="switchTab('flow')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> ご利用の流れ</button></li>
+                    <li><button onclick="switchTab('home-intro')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> 所在地・アクセス</button></li>
+                    <li><button onclick="switchTab('contact')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> お問い合わせ</button></li>
+                </ul>
+            </div>
+
+            <!-- 著作・技術クレジット -->
+            <div class="md:col-span-3 space-y-4 md:space-y-3 text-sm md:text-xs text-[#3F6B52] md:text-right">
+                <h5 class="text-sm md:text-xs font-bold uppercase tracking-widest text-[#2F5D45]">ホームページについて</h5>
+                <div class="space-y-1 mt-2">
+                    <p>Copyright &copy; 福寿草の会 All Rights Reserved.</p>
+                    <p class="text-xs text-[#5F7F6A] leading-relaxed">
+                        ホームページ制作：<a href="https://will-next1.github.io/will-next/" target="_blank" rel="noopener noreferrer" class="text-[#3F6B52] underline underline-offset-2 hover:text-[#2F5D45]">ウィルネクスト合同会社</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 住所コピー完了時のポップアップメッセージ（Toast） -->
+    <div id="copy-toast" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-stone-900 text-white text-xs px-4 py-2.5 rounded-xl shadow-xl transition-all duration-300 opacity-0 pointer-events-none flex items-center gap-1.5 z-50">
+        <i class="fa-solid fa-clipboard-check text-emerald-400"></i>
+        <span>住所をクリップボードにコピーしました。</span>
+    </div>
+
+    <!-- 画像拡大ライトボックス用オーバーレイ -->
+    <div id="lightbox" class="fixed inset-0 bg-black/90 z-50 hidden flex flex-col items-center justify-center p-4" onclick="closeLightbox()">
+        <button class="absolute top-4 right-4 text-white hover:text-stone-300 text-3xl transition-colors" onclick="closeLightbox()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="max-w-3xl max-h-[80vh] flex flex-col items-center gap-4" onclick="event.stopPropagation()">
+            <img id="lightbox-img" class="max-w-full max-h-[70vh] rounded-xl shadow-2xl object-contain border border-stone-800" src="" alt="拡大画像">
+            <p id="lightbox-caption" class="text-white text-sm md:text-base font-semibold text-center max-w-xl"></p>
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        function closeMobileMenu() {
+            const nav = document.getElementById('primary-nav');
+            const toggle = document.getElementById('mobile-menu-toggle');
+            if (nav && toggle) {
+                nav.classList.add('hidden');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const nav = document.getElementById('primary-nav');
+            const toggle = document.getElementById('mobile-menu-toggle');
+            if (nav && toggle) {
+                const isOpen = !nav.classList.contains('hidden');
+                nav.classList.toggle('hidden', isOpen);
+                toggle.setAttribute('aria-expanded', String(!isOpen));
+            }
+        }
+
+        // タブ（ページ）切り替えロジック
+        function switchTab(tabId) {
+            // すべてのコンテンツを非表示にする
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => {
+                content.classList.add('hidden');
+            });
+
+            // 指定したコンテンツを表示する
+            const activePage = document.getElementById(`page-${tabId}`);
+            if (activePage) {
+                activePage.classList.remove('hidden');
+            }
+
+            // ナビゲーションのハイライト状態をリセット
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('border-fukuGreen-600', 'text-fukuGreen-700', 'bg-fukuGreen-50', 'font-bold');
+                btn.classList.add('text-stone-600', 'border-transparent');
+            });
+
+            // 現在のアクティブナビをハイライト
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if (activeNav) {
+                activeNav.classList.add('border-fukuGreen-600', 'text-fukuGreen-700', 'bg-fukuGreen-50', 'font-bold');
+                activeNav.classList.remove('text-stone-600', 'border-transparent');
+            }
+
+            closeMobileMenu();
+
+            // ページ上部にスクロール
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // コピーツール
+        function copyToClipboard(text) {
+            // 一時的なテキストエリアを作成してコピーをシミュレート
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // トースト通知を表示
+            const toast = document.getElementById('copy-toast');
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // ライトボックス (画像拡大)
+        function openLightbox(imgSrc, captionText) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightboxImg.src = imgSrc;
+            lightboxImg.alt = captionText;
+            lightboxCaption.textContent = captionText;
+
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // 背後のスクロールを止める
+        }
+
+        // ライトボックス閉じる
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = ''; // スクロールを戻す
+        }
+
+        // 初期ロード時に最初のタブを活性化
+        window.onload = function() {
+            switchTab('matsudo');
+        };
+    </script>
+</body>
+</html>
