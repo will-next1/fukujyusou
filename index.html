@@ -144,23 +144,6 @@
                 >
             </div>
 
-            <!-- トップページ内のお問い合わせ導線 -->
-            <div class="mb-8 bg-[#EAF6E6] text-[#2F5D45] rounded-2xl p-5 md:p-6 shadow-sm border border-[#CFE8C8] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div>
-                    <p class="text-xs font-bold tracking-widest text-[#4F8A5B] uppercase">Contact</p>
-                    <h3 class="text-lg md:text-xl font-bold mt-1">ご見学・ご相談はお気軽にお問い合わせください</h3>
-                    <p class="text-sm text-[#3F6B52] mt-1">生活のこと、空き状況、体験入所の流れなど、まずはお電話でご相談いただけます。</p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-2 md:flex-shrink-0">
-                    <a href="tel:090-6133-8208" class="inline-flex items-center justify-center gap-2 bg-[#4F8A5B] text-white font-bold px-4 py-3 rounded-lg shadow-sm hover:bg-[#3F744B] transition-colors">
-                        <i class="fa-solid fa-phone" aria-hidden="true"></i>090-6133-8208
-                    </a>
-                    <button onclick="switchTab('contact')" class="inline-flex items-center justify-center gap-2 bg-white border border-[#CFE8C8] text-[#3F6B52] font-bold px-4 py-3 rounded-lg hover:bg-[#F6FBF2] transition-colors">
-                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>お問い合わせを見る
-                    </button>
-                </div>
-            </div>
-
             <!-- メイン紹介カード -->
             <div class="bg-white rounded-3xl border border-stone-200 shadow-sm overflow-hidden mb-8">
                 <div class="p-6 md:p-8">
@@ -454,23 +437,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- ご見学・ご相談への導線 -->
-            <div class="bg-[#EAF6E6] text-[#2F5D45] rounded-2xl p-5 md:p-6 shadow-sm border border-[#CFE8C8] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                <div>
-                    <p class="text-xs font-bold tracking-widest text-[#4F8A5B] uppercase">Contact</p>
-                    <h3 class="text-lg md:text-xl font-bold mt-1">ご見学・ご相談を受け付けています</h3>
-                    <p class="text-sm text-[#3F6B52] mt-1">生活のこと、空き状況、体験入所の流れなど、まずはお気軽にお電話でご相談ください。</p>
-                </div>
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <a href="tel:090-6133-8208" class="inline-flex items-center justify-center gap-2 bg-[#4F8A5B] text-white font-bold px-4 py-3 rounded-lg hover:bg-[#3F6B52] transition-colors shadow-sm">
-                        <i class="fa-solid fa-phone" aria-hidden="true"></i>電話で相談する
-                    </a>
-                    <button onclick="switchTab('contact')" class="inline-flex items-center justify-center gap-2 bg-white border border-[#CFE8C8] text-[#3F6B52] font-bold px-4 py-3 rounded-lg hover:bg-[#F6FBF2] transition-colors">
-                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>お問い合わせを見る
-                    </button>
-                </div>
-            </div>
         </section>
 
 
@@ -612,10 +578,10 @@
             </div>
 
             <!-- タイムライン / ステップ表示 -->
-            <div class="max-w-3xl mx-auto relative border-l-2 border-emerald-200 ml-4 md:ml-10 space-y-10 py-2">
+            <div class="max-w-3xl mx-auto relative border-l-2 border-emerald-200 space-y-10 py-2 mb-4 md:mb-6">
                 
                 <!-- Step 1 -->
-                <div class="relative pl-6 md:pl-10">
+                <div class="relative pl-6 md:pl-8">
                     <div class="absolute -left-4 top-1.5 w-8 h-8 rounded-full bg-emerald-600 border-4 border-stone-50 flex items-center justify-center text-white font-bold text-xs shadow">1</div>
                     <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 hover:shadow-md transition-shadow">
                         <span class="text-emerald-700 font-bold text-sm uppercase tracking-wide">Step1 ご相談・ご見学</span>
@@ -629,7 +595,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="relative pl-6 md:pl-10">
+                <div class="relative pl-6 md:pl-8">
                     <div class="absolute -left-4 top-1.5 w-8 h-8 rounded-full bg-emerald-600 border-4 border-stone-50 flex items-center justify-center text-white font-bold text-xs shadow">2</div>
                     <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 hover:shadow-md transition-shadow">
                         <span class="text-emerald-700 font-bold text-sm uppercase tracking-wide">Step2 ご面談・お申し込み・体験入所</span>
@@ -642,18 +608,19 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="relative pl-6 md:pl-10">
+                <div class="relative pl-6 md:pl-8">
                     <div class="absolute -left-4 top-1.5 w-8 h-8 rounded-full bg-emerald-600 border-4 border-stone-50 flex items-center justify-center text-white font-bold text-xs shadow">3</div>
                     <div class="bg-white rounded-2xl border border-stone-200 shadow-sm p-6 hover:shadow-md transition-shadow">
                         <span class="text-emerald-700 font-bold text-sm uppercase tracking-wide">Step3 ご入居</span>
                         <p class="text-sm text-stone-600 mt-2 leading-relaxed">
-                            入所判定後、サービス利用受給者証が発行され、<br>
+                            入所判定後、障害福祉サービス受給者証が発行され、<br>
                             契約書・重要事項説明書などをご説明させていただき、<br>
                             新しい生活のスタートとなります。
                         </p>
                     </div>
                 </div>
             </div>
+
         </section>
 
 
@@ -799,81 +766,54 @@
                 </div>
             </div>
 
-            <!-- お問い合わせ情報 左右並列カード（2カラム） -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- 左側：直接のお問い合わせ連絡先（総合窓口） -->
-                <div class="bg-amber-50/50 border border-amber-200/50 rounded-3xl p-6 md:p-8 space-y-6">
-                    <div>
-                        <h3 class="text-lg font-bold text-amber-800 mb-1 flex items-center gap-1.5">
-                            <i class="fa-solid fa-user-tie"></i> 総合お問い合わせ
+            <!-- お問い合わせ情報 3カラムカード -->
+            <div class="max-w-5xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <!-- 総合お問い合わせ -->
+                    <div class="bg-[#4F8A5B] text-white border border-[#4F8A5B] rounded-3xl p-6 md:p-7 shadow-sm">
+                        <p class="text-xs font-bold text-white/85">見学・入居に関するご相談</p>
+                        <h3 class="text-lg font-bold mt-2 flex items-center gap-2">
+                            <i class="fa-solid fa-phone-volume" aria-hidden="true"></i> 総合お問い合わせ
                         </h3>
-                        <p class="text-xs text-stone-500">ご相談・ご見学など、お気軽にお問い合わせください。</p>
+                        <p class="text-xs text-white/85 mt-1">担当：古山</p>
+                        <a href="tel:090-6133-8208" class="block text-2xl font-extrabold tracking-wide mt-4 hover:underline">090-6133-8208</a>
+                        <p class="text-xs font-bold text-white/90 mt-1">タップして電話</p>
                     </div>
 
-                    <div class="space-y-4 text-stone-700">
-                        <!-- 担当者 -->
-                        <div class="border-b border-amber-200/40 pb-2.5">
-                            <p class="text-xs text-stone-400 font-bold">担当</p>
-                            <p class="text-base font-bold text-stone-800 mt-0.5">古山（ふるやま）</p>
-                        </div>
-                        <!-- 連絡先 -->
-                        <div class="border-b border-amber-200/40 pb-2.5">
-                            <p class="text-xs text-stone-400 font-bold">見学・ご相談</p>
-                            <a href="tel:090-6133-8208" class="text-lg font-extrabold text-emerald-700 hover:underline">090-6133-8208</a>
-                        </div>
-                        <!-- メール -->
-                        <div>
-                            <p class="text-xs text-stone-400 font-bold">メール</p>
-                            <a href="mailto:fukujyusouosamu0123@yahoo.co.jp" class="text-sm font-semibold break-all text-stone-800 hover:text-emerald-700 hover:underline select-all block mt-0.5">fukujyusouosamu0123@yahoo.co.jp</a>
-                        </div>
+                    <!-- フレンドリー松戸 -->
+                    <div class="bg-white border border-stone-200 rounded-3xl p-6 md:p-7 shadow-sm">
+                        <p class="text-xs font-bold text-emerald-700">松戸の施設へ直接連絡</p>
+                        <h3 class="text-lg font-bold text-stone-800 mt-2 flex items-center gap-2">
+                            <i class="fa-solid fa-house-chimney text-emerald-600" aria-hidden="true"></i> フレンドリー松戸
+                        </h3>
+                        <a href="tel:047-375-8267" class="block text-2xl font-extrabold tracking-wide text-stone-900 mt-4 hover:text-emerald-700 hover:underline transition-colors">047-375-8267</a>
+                        <p class="text-xs font-bold text-emerald-700 mt-1">電話をかける</p>
+                    </div>
+
+                    <!-- フレンドリー柏 -->
+                    <div class="bg-white border border-stone-200 rounded-3xl p-6 md:p-7 shadow-sm">
+                        <p class="text-xs font-bold text-emerald-700">柏の施設へ直接連絡</p>
+                        <h3 class="text-lg font-bold text-stone-800 mt-2 flex items-center gap-2">
+                            <i class="fa-solid fa-house-chimney text-emerald-600" aria-hidden="true"></i> フレンドリー柏
+                        </h3>
+                        <a href="tel:04-7128-8188" class="block text-2xl font-extrabold tracking-wide text-stone-900 mt-4 hover:text-emerald-700 hover:underline transition-colors">04-7128-8188</a>
+                        <p class="text-xs font-bold text-emerald-700 mt-1">電話をかける</p>
                     </div>
                 </div>
 
-                <!-- 右側：グループホーム直通電話 -->
-                <div class="bg-white border border-stone-200 rounded-3xl p-6 md:p-8 shadow-sm flex flex-col justify-between">
-                    <div class="space-y-6">
-                        <div>
-                            <h3 class="text-lg font-bold text-stone-800 mb-1 flex items-center gap-1.5">
-                                <i class="fa-solid fa-house-chimney text-emerald-600"></i> 各グループホーム直通
-                            </h3>
-                            <p class="text-xs text-stone-500">施設へ直接お電話される場合は、下記番号へご連絡ください。</p>
-                        </div>
-
-                        <div class="space-y-6">
-                            <!-- フレンドリー松戸 -->
-                            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 space-y-2">
-                                <h4 class="font-bold text-stone-800 text-sm flex items-center gap-1.5">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> フレンドリー松戸
-                                </h4>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs text-stone-500">お電話番号</span>
-                                    <!-- 確認用: 各グループホーム直通のフレンドリー松戸番号として残しています。 -->
-                                    <a href="tel:047-375-8267" class="text-lg font-extrabold text-stone-900 hover:text-emerald-700 hover:underline transition-colors">
-                                        047-375-8267
-                                    </a>
-                                </div>
-                            </div>
-
-                            <!-- フレンドリー柏 -->
-                            <div class="p-4 bg-stone-50 rounded-2xl border border-stone-100 space-y-2">
-                                <h4 class="font-bold text-stone-800 text-sm flex items-center gap-1.5">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> フレンドリー柏
-                                </h4>
-                                <div class="flex items-center justify-between">
-                                    <span class="text-xs text-stone-500">お電話番号</span>
-                                    <a href="tel:04-7128-8188" class="text-lg font-extrabold text-stone-900 hover:text-emerald-700 hover:underline transition-colors">
-                                        04-7128-8188
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                <!-- メールでのお問い合わせ -->
+                <div class="mt-4 bg-[#EAF6E6] border border-[#CFE8C8] rounded-2xl py-3 px-4 md:px-5 shadow-sm flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-center sm:text-left">
+                    <div class="flex items-center gap-2 text-[#3F6B52] font-bold">
+                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                        <span>メールでのお問い合わせ</span>
                     </div>
+                    <a href="mailto:fukujyusouosamu0123@yahoo.co.jp" class="text-sm font-semibold break-all text-stone-800 hover:text-emerald-700 hover:underline select-all">fukujyusouosamu0123@yahoo.co.jp</a>
+                </div>
 
-                    <!-- 補足案内 -->
-                    <div class="mt-6 pt-4 border-t border-stone-100 text-[11px] text-stone-500 leading-relaxed">
-                        ※お電話をおかけの際は、お掛け間違いのないようご注意ください。<br>
-                        ※ご見学や体験入所の手続き方法などは、「ご利用の流れ」ページでもご確認いただけます。
-                    </div>
+                <!-- 補足案内 -->
+                <div class="mt-6 text-[11px] text-stone-500 leading-relaxed text-center">
+                    ※お電話をおかけの際は、お掛け間違いのないようご注意ください。<br>
+                    ※ご見学や体験入所の手続き方法などは、「ご利用の流れ」ページでもご確認いただけます。
                 </div>
             </div>
         </section>
@@ -881,40 +821,75 @@
     </main>
 
     <!-- フッター -->
-    <footer class="bg-[#F1F7EA] text-[#3F6B52] mt-12 py-12 border-t-4 border-[#CFE8C8]">
-        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
-            <!-- 組織情報 -->
-            <div class="md:col-span-5 space-y-5 md:space-y-4">
-                <h4 class="text-xl font-serif font-bold text-[#2F5D45] tracking-wider flex items-center gap-1.5">
-                    <i class="fa-solid fa-leaf text-[#4F8A5B]" aria-hidden="true"></i>特定非営利活動法人 福寿草の会
-                </h4>
-                <p class="text-sm md:text-xs text-[#3F6B52] leading-relaxed max-w-sm">
-                    私たちは、地域の中でその方らしく暮らしていくことを支えるグループホームです。家族のような温かさと、落ち着いて過ごせる環境づくりを大切にしています。
-                </p>
-                <p class="text-sm md:text-xs text-[#3F6B52] leading-relaxed">
-                    <span class="font-bold text-[#2F5D45]">見学・ご相談：</span> 090-6133-8208（担当：古山）
-                </p>
+    <footer class="bg-[#F1F7EA] text-[#3F6B52] mt-12 py-8 border-t-4 border-[#CFE8C8]">
+        <div class="max-w-6xl mx-auto px-4">
+            <!-- 上段：法人情報・お問い合わせ先 -->
+            <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,7fr)_minmax(0,13fr)] gap-6 lg:gap-8 items-stretch">
+                <!-- 法人情報 -->
+                <div class="flex flex-col justify-center">
+                    <h4 class="text-lg font-serif font-bold text-[#2F5D45] tracking-wide flex items-center gap-2">
+                        <i class="fa-solid fa-leaf text-[#4F8A5B]" aria-hidden="true"></i>
+                        <span>特定非営利活動法人 福寿草の会</span>
+                    </h4>
+                    <p class="mt-3 text-sm lg:text-xs text-[#3F6B52] leading-relaxed max-w-md lg:max-w-sm">
+                        私たちは、地域の中でその方らしく暮らしていくことを支えるグループホームです。家族のような温かさと、落ち着いて過ごせる環境づくりを大切にしています。
+                    </p>
+                </div>
+
+                <!-- お問い合わせ先 -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div class="h-full min-w-0 rounded-2xl border border-[#BFDAB8] bg-[#E7F2DF] px-4 py-4 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center gap-2 text-sm font-bold text-[#2F5D45]">
+                            <i class="fa-solid fa-phone text-[#4F8A5B]" aria-hidden="true"></i>
+                            <span>見学・入居相談</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="tel:090-6133-8208" class="inline-block text-lg lg:text-base xl:text-lg font-bold tracking-wide text-[#2F5D45] hover:underline whitespace-nowrap">090-6133-8208</a>
+                            <p class="mt-1 text-xs text-[#5F7F6A]">担当：古山</p>
+                        </div>
+                    </div>
+
+                    <div class="h-full min-w-0 rounded-2xl border border-[#D3E5CD] bg-white/80 px-4 py-4 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center gap-2 text-sm font-bold text-[#2F5D45]">
+                            <i class="fa-solid fa-house-chimney text-[#4F8A5B]" aria-hidden="true"></i>
+                            <span>フレンドリー松戸</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="tel:047-375-8267" class="inline-block text-lg lg:text-base xl:text-lg font-bold tracking-wide text-[#2F5D45] hover:underline whitespace-nowrap">047-375-8267</a>
+                            <p class="mt-1 text-xs text-[#5F7F6A]">施設直通</p>
+                        </div>
+                    </div>
+
+                    <div class="h-full min-w-0 rounded-2xl border border-[#D3E5CD] bg-white/80 px-4 py-4 shadow-sm flex flex-col justify-between">
+                        <div class="flex items-center gap-2 text-sm font-bold text-[#2F5D45]">
+                            <i class="fa-solid fa-house-chimney text-[#4F8A5B]" aria-hidden="true"></i>
+                            <span>フレンドリー柏</span>
+                        </div>
+                        <div class="mt-3">
+                            <a href="tel:04-7128-8188" class="inline-block text-lg lg:text-base xl:text-lg font-bold tracking-wide text-[#2F5D45] hover:underline whitespace-nowrap">04-7128-8188</a>
+                            <p class="mt-1 text-xs text-[#5F7F6A]">施設直通</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <!-- ナビゲーションリンク -->
-            <div class="md:col-span-4 space-y-4 md:space-y-3">
-                <h5 class="text-sm md:text-xs font-bold uppercase tracking-widest text-[#2F5D45]">ページマップ</h5>
-                <ul class="text-sm md:text-xs space-y-2.5 md:space-y-2 grid grid-cols-1 sm:grid-cols-2 gap-x-4">
-                    <li><button onclick="switchTab('matsudo')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> 施設案内</button></li>
-                    <li><button onclick="switchTab('feature')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> 当グループホームの特徴</button></li>
-                    <li><button onclick="switchTab('jiman')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> 暮らしの様子</button></li>
-                    <li><button onclick="switchTab('flow')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> ご利用の流れ</button></li>
-                    <li><button onclick="switchTab('home-intro')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> 所在地・アクセス</button></li>
-                    <li><button onclick="switchTab('contact')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-0.5"><i class="fa-solid fa-caret-right text-[#4F8A5B]"></i> お問い合わせ</button></li>
-                </ul>
-            </div>
+            <!-- 下段：ページマップ・著作クレジット -->
+            <div class="mt-6 pt-5 border-t border-[#CFE0C9] flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 lg:gap-8">
+                <nav aria-label="ページマップ" class="min-w-0">
+                    <h5 class="text-xs font-bold uppercase tracking-widest text-[#2F5D45] mb-2">ページマップ</h5>
+                    <ul class="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-4 gap-y-1 text-xs text-[#3F6B52]">
+                        <li><button onclick="switchTab('matsudo')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-1"><i class="fa-solid fa-caret-right text-[#4F8A5B]" aria-hidden="true"></i> 施設案内</button></li>
+                        <li><button onclick="switchTab('feature')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-1"><i class="fa-solid fa-caret-right text-[#4F8A5B]" aria-hidden="true"></i> 当グループホームの特徴</button></li>
+                        <li><button onclick="switchTab('jiman')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-1"><i class="fa-solid fa-caret-right text-[#4F8A5B]" aria-hidden="true"></i> 暮らしの様子</button></li>
+                        <li><button onclick="switchTab('flow')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-1"><i class="fa-solid fa-caret-right text-[#4F8A5B]" aria-hidden="true"></i> ご利用の流れ</button></li>
+                        <li><button onclick="switchTab('home-intro')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-1"><i class="fa-solid fa-caret-right text-[#4F8A5B]" aria-hidden="true"></i> 所在地・アクセス</button></li>
+                        <li><button onclick="switchTab('contact')" class="hover:text-[#2F5D45] transition-colors text-left flex items-center gap-1.5 py-1"><i class="fa-solid fa-caret-right text-[#4F8A5B]" aria-hidden="true"></i> お問い合わせ</button></li>
+                    </ul>
+                </nav>
 
-            <!-- 著作・技術クレジット -->
-            <div class="md:col-span-3 space-y-4 md:space-y-3 text-sm md:text-xs text-[#3F6B52] md:text-right">
-                <h5 class="text-sm md:text-xs font-bold uppercase tracking-widest text-[#2F5D45]">ホームページについて</h5>
-                <div class="space-y-1 mt-2">
+                <div class="shrink-0 text-xs text-[#3F6B52] lg:text-right leading-relaxed">
                     <p>Copyright &copy; 福寿草の会 All Rights Reserved.</p>
-                    <p class="text-xs text-[#5F7F6A] leading-relaxed">
+                    <p class="text-[#5F7F6A]">
                         ホームページ制作：<a href="https://will-next1.github.io/will-next/" target="_blank" rel="noopener noreferrer" class="text-[#3F6B52] underline underline-offset-2 hover:text-[#2F5D45]">ウィルネクスト合同会社</a>
                     </p>
                 </div>
